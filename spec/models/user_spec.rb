@@ -1,5 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+describe User do
+  before(:each) do
+    DatabaseCleaner.start
+  end
+
+  after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  it "should create a new user" do
+    user = User.create! email: "faker@faker.com", password: "asdfasdf", password_confirmation: "asdfasdf"
+    expect(user).to eq(User.last)
+  end
 end

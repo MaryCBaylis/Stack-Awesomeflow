@@ -23,23 +23,23 @@ class CreateSchema < ActiveRecord::Migration
     create_table :responses do |t|
       t.text :body
       t.integer :user_id
-      t.string :parent_type
-      t.integer :parent_id
+      t.string :post_type
+      t.integer :post_id
 
       t.timestamps
     end
     add_index :responses, :user_id
-    add_index :responses, :parent_id
+    add_index :responses, :post_id
 
     create_table :votes do |t|
       t.integer :value
       t.integer :user_id
-      t.string :parent_type
-      t.integer :parent_id
+      t.string :votable_type
+      t.integer :votable_id
 
       t.timestamps
     end
     add_index :votes, :user_id
-    add_index :votes, :parent_id
+    add_index :votes, :votable_id
   end
 end

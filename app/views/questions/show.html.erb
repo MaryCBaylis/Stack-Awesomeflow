@@ -17,7 +17,12 @@
     </div>
     <div class='question-show-question-footer'>
       <p><%= link_to 'Add Answer', new_question_answer_path(@question) %></p>
-      <p><%= link_to 'Add Comment', '#' %></p>
+      <!-- <p><%= link_to 'Add Comment', new_comment_path %></p> -->
+      <%= form_tag("/comments/new", method: "get") do %>
+        <%= hidden_field_tag(:commentable_type, @question.class) %>
+        <%= hidden_field_tag(:commentable_id, @question.id) %>
+        <%= submit_tag("Add Comment") %>
+      <% end %>
     </div>
     <div class='question-show-comments'>
       <%= render partial: "shared/comments", locals: { comments: @question.comments } %>

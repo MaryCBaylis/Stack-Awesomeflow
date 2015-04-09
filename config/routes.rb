@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:new, :edit, :destroy, :create, :update]
   end
 
-  resources :responses, except: [:index, :show]
+  resources :comments, except: [:index, :show]
 
   get 'new_vote', to: 'votes#new'
 

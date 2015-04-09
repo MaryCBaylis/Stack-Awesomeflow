@@ -1,6 +1,6 @@
 class Response < ActiveRecord::Base
   belongs_to :user, inverse_of: :responses
-  belongs_to :post, polymorphic: true, inverse_of: :posts
+  belongs_to :post, polymorphic: true, inverse_of: :responses
   has_many :votes, as: :votable, dependent: :destroy
 
   validates :body, presence: true

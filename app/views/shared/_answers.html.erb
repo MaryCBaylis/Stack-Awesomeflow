@@ -1,5 +1,10 @@
 <% answers.each do |answer| %>
   <div class='question-show-answer<%= " best-answer" if answer.is_best %>'>
+    <% if answer.is_best %>
+    <div class='best-answer-box'>
+      <p>This answer was voted best by the question asker!</p>
+    </div>
+    <% end %>
     <div class='question-show-answer-body'>
       <p>by <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
       <p><%= answer.body %></p>

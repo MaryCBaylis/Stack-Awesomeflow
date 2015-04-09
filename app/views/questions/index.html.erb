@@ -1,7 +1,26 @@
-<% @questions.each do |question| %>
-  <div>
-    <%= link_to question.title, question_path(question) %>
-    <p>User: <%= question.user.email %></p>
-    <p><%= question.created_at.strftime(" Asked on %m/%d/%Y at %I:%M%p") %></p>
+<div class='question-all-container'>
+  <div class='question-header'>
+    <h2>View Questions</h2>
+    <div class='question-header-links'>
+      <ul>
+        <li>Sort by:</li>
+        <li><%= link_to 'Recent', '#' %></li>
+        <li><%= link_to 'Popular', '#' %></li>
+        <li><%= link_to 'Trending', '#' %></li>
+      </ul>
+    </div>
   </div>
-<% end %>
+
+  <% @questions.each do |question| %>
+    <div class='question'>
+      <div class='question-header'>
+        <h4><%= link_to question.title, question_path(question) %></h4>
+        <span class='question-votes'><%= question.votes.count %></span>
+      </div>
+      <div class='question-content'>
+        <p>User: <%= question.user.email %></p>
+        <p><%= question.created_at.strftime(" Asked on %m/%d/%Y at %I:%M%p") %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

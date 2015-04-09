@@ -32,9 +32,18 @@ feature "User viewing answers" do
   end
 
   scenario "User can view their answer on question page once added" do
-    
+    visit question_path(question)
+    click_link("Add Answer")
+    find('#answer_body').set("This is a new answer")
+    click_button('Create Answer')
+    expect(page).to have_content("This is a new answer")
   end
 
   scenario "User can edit their answer" do
+    visit question_path(question)
+    click_link("Edit Your Answer")
+    find('#answer_body').set("This is a new-new answer")
+    click_button('Update Answer')
+    expect(page).to have_content("This is a new-new answer")
   end
 end

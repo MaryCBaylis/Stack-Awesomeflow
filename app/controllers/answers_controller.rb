@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
 
   def new
     @answer = Answer.new
+    @question = Question.find_by(id: params[:question_id])
   end
 
   def create

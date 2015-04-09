@@ -17,5 +17,13 @@ body {
   $texture-top-background: lighten($texture-color, 1%);
   $texture-bottom-background: darken($texture-color, 10%);
     // gradient color 1, gradient color 2, gradient angle, texture-number, 0=inverted or 1=normal  
-  @include texture(180deg, $texture-top-background, $texture-bottom-background, 67, 1);
+  @include texture(180deg, $texture-top-background, $texture-bottom-background, 51, 1);
+}
+
+.content {
+  width: 75%;
+  margin: 0 auto;
+  padding: 15px 40px;
+  min-height: 600px;
+  background-color: hsla(60, 100%, 95%, 0.8);
 }

@@ -96,5 +96,3 @@
     @include background(url("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/textures/inverted/#{nth($texture-list, $texture-number)}"), linear-gradient($gradient-angle, $bg-color-1, $bg-color-2), center no-repeat $bg-color-1 scroll);
   }
 }
-
-// The mixin above should preferably be in a file of its own. Below is the code for the object that has the texture.

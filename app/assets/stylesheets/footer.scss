@@ -1,7 +1,4 @@
-$font-title: Allerta;
-$font-copy: 'Crimson Text';
-
-nav {
+footer {
   height: 80px;
   width: 100%;
   margin: 0;
@@ -11,10 +8,10 @@ nav {
   align-items: center;
   background-color: #490A3D;
 
-  h1 {
+  h2 {
     font-family: $font-title;
     color: white;
-    font-size: 40px;
+    font-size: 24px;
   }
 
   ul {

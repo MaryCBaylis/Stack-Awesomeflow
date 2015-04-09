@@ -3,6 +3,14 @@ class QuestionsController < ApplicationController
     @questions = Question.order created_at: :desc
   end
 
+  def show
+    @question = Question.find_by id: params[:id]
+
+    unless @question
+      redirect_to questions_path, alert: "That question does not seem to exist"
+    end
+  end
+
 	def new
 		@question = Question.new
 	end

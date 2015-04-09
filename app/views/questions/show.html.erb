@@ -1,0 +1,6 @@
+<div>
+  <h1><%= @question.title %></h1>
+  <p>User: <%= @question.user.email %></p>
+  <p><%= @question.created_at.strftime(" Asked on %m/%d/%Y at %I:%M%p") %></p>
+  <p><%= @question.body %></p>
+</div>

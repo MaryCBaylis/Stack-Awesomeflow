@@ -26,14 +26,12 @@ describe QuestionsController do
     it "should let update your question" do
       put :update, { id: question.to_param, question: {title: question.title, body: "this is the new body", user_id: user.id} }
       expect(assigns(:question).body).to eq("this is the new body")
-
     end
 
     it "should not let you update the question if you are not signed in" do
       sign_out user 
       put :update, { id: question.to_param, question: {title: question.title, body: "this is the new body", user_id: user.id} }
       expect(Question.find_by(id: question.id)).to eq(question)
-
     end
   end
 
@@ -48,6 +46,5 @@ describe QuestionsController do
       delete :destroy, { id: question.to_param }
       expect(assigns(:question)).to be_nil
     end
-
   end
 end

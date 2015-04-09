@@ -1,0 +1,83 @@
+$font-copy: 'Crimson Text';
+$border-color: #490A3D;
+
+.form-container {
+  font-family: $font-copy;
+  width: 100%;
+  margin: 0 auto;
+
+  .form-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      margin: 5px;
+    }
+  }
+
+  .form-body {
+    width: 70%;
+    margin: 0 auto;
+    
+    form {
+      width: 70%;
+      margin: 0 auto;
+      padding: 20px;
+
+      p {
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      ul {
+        list-style-type: none;
+        width: 100%;
+        margin: auto;
+        padding-left: 0;
+      }
+
+      li {
+        label {
+          padding: 10px 0;
+          font-weight: 400;
+          margin: 0 auto;
+          text-align: center;
+          display: block;
+          font-size: 24px;
+        }
+        input[type='text'] {
+          width: 100%;
+          margin: 0 auto;
+          border-radius: 5px;
+          border: 1px solid $border-color;
+          padding: 5px;
+        }
+        textarea {
+          min-height: 300px;
+          width: 100%;
+          margin: 0 auto;
+          border-radius: 5px;
+          border: 1px solid $border-color;
+          padding: 5px;
+          resize: vertical;
+        }
+      }
+
+      input[type='submit'] {
+        width: 100%;
+        margin: 15px auto 0;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid $border-color;
+        background-color: $orange;
+        color: white;
+        font-size: 24px;
+
+        &:hover {
+          cursor: pointer;
+          
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <% responses.each do |response| %>
-    <div>
-      <p><%= response.user.email %>: <%= response.created_at.strftime("on %m/%d/%Y at %I:%M%p") %></p>
-      <p><%= response.body %></p>
-    </div>
+  <div class='response'>
+    <p><%= response.user.email %>: <%= response.created_at.strftime("on %m/%d/%Y at %I:%M%p") %></p>
+    <p><%= response.body %></p>
+  </div>
 <% end %>

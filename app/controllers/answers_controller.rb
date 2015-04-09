@@ -35,6 +35,18 @@ class AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    @question = Question.find_by(id: params[:question_id]
+      )
+    @answer = Answer.find_by(id: params[:id])
+    if @answer.user_id == current_user.id
+      @answer.destroy
+      redirect_to questions_path, alert: "You successfully deleted your answer."
+    else
+      redirect_to questions_path, alert: "That was bad, and you should feel bad.  You're bad."
+    end
+  end
+
   private
 
   def answer_params

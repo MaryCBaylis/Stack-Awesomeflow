@@ -1,7 +1,14 @@
 <% answers.each do |answer| %>
-  <div>
-    <p><%= answer.user.email %>: <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %></p>
-    <p><%= answer.body %></p>
-    <%= render partial: "shared/responses", locals: { responses: answer.responses } %>
+  <div class='question-show-answer'>
+    <div class='question-show-answer-body'>
+      <p>by <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
+      <p><%= answer.body %></p>
+    </div>
+    <div class='question-show-answer-footer'>
+      <p class='question-show-answer-add-response'><%= link_to 'Add Response', '#' %></p>
+    </div>
+    <div class='question-show-responses'>  
+      <%= render partial: "shared/responses", locals: { responses: answer.responses } %>
+    </div>
   </div>
 <% end %>

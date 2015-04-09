@@ -1,18 +1,31 @@
-<%= form_for @question do |f| %>
+<div class='form-container'>
+  <div class='form-header'>
+    <h2>Here is the form title!</h2>
+  </div>
 
-	<% if @question.errors.any? %>
-		<ul>
-			<% @question.errors.full_messages.each do |e| %>
-				<li><%= e %></li>
-			<% end %>
-		</ul>
-	<% end %>
+  <div class='form-body'>
+	  <%= form_for @question do |f| %>
+	    <p>Here is a description regarding the form.</p>
 
-	<%= f.label :title %>
-	<%= f.text_field :title %>
+	    <ul>
+				<% @question.errors.full_messages.each do |e| %>
+					<li><%= e %></li>
+				<% end %>
+			</ul>
 
-	<%= f.label :body %>
-	<%= f.text_area :body %>
+	      <ul>
+	        <li>
+	          <%= f.label :title %>
+	          <%= f.text_field :title %>
+	        </li>
+	        <li>
+	          <%= f.label :body %>
+						<%= f.text_area :body %>
+	        </li>
+	      </ul>
 
-	<%= f.submit %>
-<% end %>
+	      <%= f.submit %>
+	  	</div>
+  	<% end %>
+  </div>
+</div>

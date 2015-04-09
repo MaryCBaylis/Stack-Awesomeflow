@@ -6,6 +6,9 @@
     </div>
     <div class='question-show-answer-footer'>
       <p class='question-show-answer-add-response'><%= link_to 'Add Response', '#' %></p>
+      <% if answer.user == current_user %>
+        <p class='question-show-answer-add-response'><%= link_to 'Edit Your Answer!', edit_question_answer_path(@question, answer) %></p>
+      <% end %>
     </div>
     <div class='question-show-responses'>  
       <%= render partial: "shared/responses", locals: { responses: answer.responses } %>

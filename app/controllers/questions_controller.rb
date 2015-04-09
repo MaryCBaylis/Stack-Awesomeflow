@@ -1,42 +1,53 @@
 class QuestionsController < ApplicationController
+  def index
+    @questions = Question.order created_at: :desc
+  end
 
-	def new
-		@question = Question.new
-	end
+  def show
+    @question = Question.find_by id: params[:id]
 
-	def create
-		params[:question][:user_id] = current_user.id
-		@question = Question.new(question_params)
+    unless @question
+      redirect_to questions_path, alert: "That question does not seem to exist"
+    end
+  end
 
-		if @question.save
-			redirect_to question_path(@question)
-		else
-			render "new"
-		end
-	end
+  def new
+    @question = Question.new
+  end
 
-	def edit
-		@question = Question.find_by(id: params[:id])
-	end
+  def create
+    params[:question][:user_id] = current_user.id
+    @question = Question.new(question_params)
 
-	def update
-		@question = Question.find_by(id: params[:id])
-		if @question && @question.update(question_params)
-			redirect_to question_path(@question)
-		else
-			render "edit"
-		end
-	end
+    if @question.save
+      redirect_to question_path(@question)
+    else
+      render "new"
+    end
+  end
 
-	def destroy 
-		@question = Question.find_by(id: params[:id])
-		@question.destroy
-		redirect_to questions_path
-	end 
+  def edit
+    @question = Question.find_by(id: params[:id])
+  end
 
-	private
+  def update
+    @question = Question.find_by(id: params[:id])
+    if @question && @question.update(question_params)
+      redirect_to question_path(@question)
+    else
+      render "edit"
+    end
+  end
 
-	def question_params
-		params.require(:question).permit(:title, :body, :user_id)
-	end
+  def destroy
+    @question = Question.find_by(id: params[:id])
+    @question.destroy
+    redirect_to questions_path
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :body, :user_id)
+  end
 end

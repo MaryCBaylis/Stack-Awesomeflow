@@ -1,0 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Allerta|Crimson+Text);
+
+$font-title: Allerta;
+$font-copy: 'Crimson Text';
+
+html {
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 800px;
+  margin: 0;
+  box-sizing: inherit;
+  font-family: $font-copy;
+  $texture-color: #8A9B0F;
+  $texture-top-background: lighten($texture-color, 1%);
+  $texture-bottom-background: darken($texture-color, 10%);
+    // gradient color 1, gradient color 2, gradient angle, texture-number, 0=inverted or 1=normal  
+  @include texture(180deg, $texture-top-background, $texture-bottom-background, 67, 1);
+}

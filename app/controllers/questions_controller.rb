@@ -32,17 +32,25 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find_by(id: params[:id])
-    if @question && @question.update(question_params)
-      redirect_to question_path(@question)
-    else
-      render "edit"
-    end
+    if (@question.user_id == current_user.id)
+	    if @question && @question.update(question_params)
+	      redirect_to question_path(@question)
+	    else
+	      render "edit"
+	    end
+	  else
+	  	redirect_to questions_path, alert: "That was bad, and you should feel bad.  You're bad."
+	  end
   end
 
   def destroy
     @question = Question.find_by(id: params[:id])
-    @question.destroy
-    redirect_to questions_path
+    if (@question.user_id == current_user.id)
+	    @question.destroy
+	    redirect_to questions_path
+	  else
+	  	redirect_to questions_path, alert: "That was bad, and you should feel bad.  You're bad."
+	  end
   end
 
   private

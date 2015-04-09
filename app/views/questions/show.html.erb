@@ -1,6 +1,10 @@
-<div>
+<section>
   <h1><%= @question.title %></h1>
   <p>User: <%= @question.user.email %></p>
-  <p><%= @question.created_at.strftime(" Asked on %m/%d/%Y at %I:%M%p") %></p>
+  <p><%= @question.created_at.strftime("%m/%d/%Y, %I:%M%p") %></p>
   <p><%= @question.body %></p>
-</div>
+
+  <div>
+    <%= render partial: "shared/responses", locals: { responses: @question.responses } %>
+  </div>
+</section>

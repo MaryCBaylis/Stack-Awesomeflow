@@ -4,50 +4,50 @@ Answer.destroy_all
 Response.destroy_all
 Vote.destroy_all
 
-20.times do
+users = 20.times.map do
 	User.create!(email: Faker::Internet.email, password: "catcatcat")
 end
 
-50.times do
-	Question.create!(user: User.all.sample, title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph)
+questions = 50.times.map do
+	users.sample.questions.create!(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph)
 end
 
-200.times do
-	Answer.create!(user: User.all.sample, body: Faker::Lorem.paragraph, question: Question.all.sample)
+answers = 200.times.map do
+	users.sample.answers.create!(body: Faker::Lorem.paragraph, question: questions.sample)
 end
 
-Question.all.each do |q|
+questions.each do |q|
 	q.answers.sample.is_best = true unless q.answers.empty?
 end
 
-200.times do
-	Response.create!(user: User.all.sample, body: Faker::Lorem.sentence, post: Question.all.sample)
+responses = 200.times.map do
+	users.sample.responses.create!(user: User.all.sample, body: Faker::Lorem.sentence, post: questions.sample)
 end
 
 500.times do
-	Response.create!(user: User.all.sample, body: Faker::Lorem.sentence, post: Answer.all.sample)
+	users.sample.responses.create!(user: User.all.sample, body: Faker::Lorem.sentence, post: answers.sample)
 end
 
 2000.times do
-	Vote.create!(value: 1, user: User.all.sample, votable: Question.all.sample)	
+	users.sample.votes.create!(value: 1, votable: questions.sample)
 end
 
 1000.times do
-	Vote.create!(value: 1, user: User.all.sample, votable: Answer.all.sample)	
+	users.sample.votes.create!(value: 1, votable: answers.sample)
 end
 
 1000.times do
-	Vote.create!(value: 1, user: User.all.sample, votable: Response.all.sample)	
+	users.sample.votes.create!(value: 1, votable: responses.sample)
 end
 
 200.times do
-	Vote.create!(value: -1, user: User.all.sample, votable: Question.all.sample)	
+	users.sample.votes.create!(value: 1, votable: questions.sample)
 end
 
 100.times do
-	Vote.create!(value: -1, user: User.all.sample, votable: Answer.all.sample)	
+	users.sample.votes.create!(value: -1, votable: answers.sample)
 end
 
 50.times do
-	Vote.create!(value: -1, user: User.all.sample, votable: Response.all.sample)	
+	users.sample.votes.create!(value: -1, votable: responses.sample)
 end

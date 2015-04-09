@@ -21,4 +21,24 @@ class AnswersController < ApplicationController
     @answer = Answer.find_by(id: params[:id])
   end
 
+  def update
+    @question = Question.find_by(id: params[:question_id])
+    @answer = Answer.find_by(id: params[:id])
+    if @answer.user_id == current_user.id
+      if @answer.update(body: params[:answer][:body])
+        redirect_to question_path(@question)
+      else
+        render 'edit'
+      end
+    else
+      redirect_to questions_path, alert: "That was bad, and you should feel bad.  You're bad."
+    end
+  end
+
+  private
+
+  def answer_params
+    params.require[:answer].permit(:body)
+  end
+
 end

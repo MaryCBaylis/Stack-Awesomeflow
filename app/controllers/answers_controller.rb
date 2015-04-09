@@ -9,12 +9,16 @@ class AnswersController < ApplicationController
     user = User.find_by(id: current_user.id)
     @question = Question.find_by(id: params[:question_id])
     @answer = Answer.new(question: @question, body: params[:answer][:body], user: user)
-    puts params[:body]
     if (@answer.save)
       redirect_to question_path(@question)
     else
       render 'new'
     end
+  end
+
+  def edit
+    @question = Question.find_by(id: params[:question_id])
+    @answer = Answer.find_by(id: params[:id])
   end
 
 end

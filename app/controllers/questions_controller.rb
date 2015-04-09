@@ -9,11 +9,30 @@ class QuestionsController < ApplicationController
 		@question = Question.new(question_params)
 
 		if @question.save
-			redirect question_path(@question)
+			redirect_to question_path(@question)
 		else
 			render "new"
 		end
 	end
+
+	def edit
+		@question = Question.find_by(id: params[:id])
+	end
+
+	def update
+		@question = Question.find_by(id: params[:id])
+		if @question && @question.update(question_params)
+			redirect_to question_path(@question)
+		else
+			render "edit"
+		end
+	end
+
+	def destroy 
+		@question = Question.find_by(id: params[:id])
+		@question.destroy
+		redirect_to questions_path
+	end 
 
 	private
 

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :mark_best]
 
   def index
     @questions = Question.order created_at: :desc
@@ -47,6 +47,11 @@ class QuestionsController < ApplicationController
     else
       redirect_to questions_path, alert: "That was bad, and you should feel bad.  You're bad."
     end
+  end
+
+  def mark_best
+    @question.mark_best(params[:answer_id])
+    redirect_to question_path(@question)
   end
 
   protected

@@ -78,6 +78,19 @@
     }
   }
 
+  .best-answer {
+    background-color: $blue;
+    .best-answer-box {
+      width: 100%;
+      text-align: center;
+      font-family: $font-title;
+      padding-bottom: 10px;
+      p {
+        margin: 0;
+      }
+    }
+  }
+
   .question-show-answers {
     margin-top: 20px;
 

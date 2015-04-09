@@ -17,7 +17,7 @@ answers = 200.times.map do
 end
 
 questions.each do |q|
-	q.answers.sample.is_best = true unless q.answers.empty?
+	q.answers.sample.update(is_best: true) unless q.answers.empty?
 end
 
 responses = 200.times.map do

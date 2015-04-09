@@ -3,6 +3,9 @@
     <div class='question-show-question-header'>
       <h1><%= @question.title %></h1>
       <p>Question asked by <%= @question.user.email %> at <%= @question.created_at.strftime("%m/%d/%Y, %I:%M%p") %>.</p>
+      <% if @question.user == current_user %>
+        <p>This is yours! Would you like to <%= link_to 'edit your question', edit_question_path(@question) %>?</p>
+      <% end %>
     </div>
     <div class='question-show-question-body'>
       <p><%= @question.body %></p>

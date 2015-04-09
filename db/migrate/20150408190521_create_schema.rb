@@ -43,3 +43,6 @@ class CreateSchema < ActiveRecord::Migration
     add_index :votes, :votable_id
   end
 end
+Question.all.each do |q|
+  q.answers.sample.is_best = true unless q.answers.empty?
+end

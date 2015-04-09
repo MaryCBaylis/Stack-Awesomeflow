@@ -22,4 +22,18 @@ describe QuestionsController do
       }.to change(Question, :count).by(1)
     end
   end
+
+  describe "DELETE #destroy" do
+    it "deletes the requested question" do 
+      delete :destroy, { id: question.to_param }
+      expect(assigns(:question)).to eq(question)
+    end
+
+    it "only lets you delete qustion if you are signed in" do
+      sign_out user 
+      delete :destroy, { id: question.to_param }
+      expect(assigns(:question)).to be_nil
+    end
+
+  end
 end

@@ -36,4 +36,10 @@ feature "User viewing a question page" do
     click_button("Delete")
     expect(page).to have_no_content(question.title) 
   end
+
+  scenario "User redirected to login page if not authorized to edit question" do
+    click_link("Log Out") 
+    visit edit_question_path(question)
+    expect(page).to have_no_content(question.title)
+  end
 end

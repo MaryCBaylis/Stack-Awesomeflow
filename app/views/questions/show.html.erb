@@ -23,7 +23,7 @@
       <h2>Answers</h2>
     </div>
     <div class='question-show-answers-container'>
-      <%= render partial: "shared/answers", locals: { answers: @question.answers } %>
+      <%= render partial: "shared/answers", locals: { answers: @question.get_answers } %>
     </div>
   </div>
 </div>

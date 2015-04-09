@@ -6,7 +6,7 @@
     </div>
     <% end %>
     <div class='question-show-answer-body'>
-      <p>by <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
+      <p><%= answer.net_vote %> votes! By <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
       <p><%= answer.body %></p>
     </div>
     <div class='question-show-answer-footer'>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :pages
   devise_for :users
 
-  resources :questions
+  resources :questions do
+    resources :answers, only: [:new, :edit, :destroy, :create, :update]
+  end
   
 end

@@ -22,6 +22,20 @@ describe QuestionsController do
       }.to change(Question, :count).by(1)
     end
   end
+  describe "PUT #update" do
+    it "should let update your question" do
+      put :update, { id: question.to_param, question: {title: question.title, body: "this is the new body", user_id: user.id} }
+      expect(assigns(:question).body).to eq("this is the new body")
+
+    end
+
+    it "should not let you update the question if you are not signed in" do
+      sign_out user 
+      put :update, { id: question.to_param, question: {title: question.title, body: "this is the new body", user_id: user.id} }
+      expect(Question.find_by(id: question.id)).to eq(question)
+
+    end
+  end
 
   describe "DELETE #destroy" do
     it "deletes the requested question" do 

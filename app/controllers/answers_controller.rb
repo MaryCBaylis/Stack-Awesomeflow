@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
 
   before_action :set_question
   before_action :set_answer, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def new
     @answer = Answer.new

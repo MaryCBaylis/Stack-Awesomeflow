@@ -12,20 +12,22 @@ feature "User viewing a question page" do
     click_button('Log in')
   end
 
-
   scenario "when user views a question" do
-    # when
     visit question_path(question)
-    # then
     expect(page).to have_content(question.title)
-
-
   end
 
   scenario "When user tries to update their question, text field are prefilled" do
     visit edit_question_path(question)
-    
     expect(page.find("textarea").text).to eq(question.body)
+
+  end
+
+  scenario "When user updates their question, it updates it on the question index page too" do
+    visit edit_question_path(question)
+    find('#question_title').set("this is the new title")
+    click_button("Update Question")
+    expect(page).to have_content("this is the new title")
 
   end
 
@@ -33,8 +35,5 @@ feature "User viewing a question page" do
     visit edit_question_path(question)
     click_button("Delete")
     expect(page).to have_no_content(question.title) 
-    
   end
-
-  
 end

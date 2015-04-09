@@ -15,7 +15,7 @@
         <p class='question-show-answer-add-response'><%= link_to 'Edit Your Answer!', edit_question_answer_path(@question, answer) %></p>
       <% end %>
       <% if @question.user == current_user %>
-        <p class='question-show-answer-add-response'><%= link_to 'Mark This Best!', mark_best_question_path(@question, answer_id: answer.id, ), id: @question.id %></p>
+        <p class='question-show-answer-add-response'><%= link_to 'Mark This Best!', mark_best_question_path(@question, answer_id: answer.id), id: @question.id %></p>
       <% end %>
     </div>
     <div class='question-show-responses'>  

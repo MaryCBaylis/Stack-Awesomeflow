@@ -8,6 +8,11 @@ class Question < ActiveRecord::Base
   validates :body, presence: true
   validates :user, presence: true
 
+  def get_answers
+    best = [Answer.find_by(id: get_best_answer_id)].compact
+    best | self.answers
+  end
+
   def get_best_answer_id
     self.answers.find_by(is_best: true).id || 0
   end

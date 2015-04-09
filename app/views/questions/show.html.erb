@@ -8,7 +8,7 @@
       <p><%= @question.body %></p>
     </div>
     <div class='question-show-question-footer'>
-      <p><%= link_to 'Add Answer', '#' %></p>
+      <p><%= link_to 'Add Answer', new_question_answer_path(@question) %></p>
       <p><%= link_to 'Add Response', '#' %></p>
     </div>
     <div class='question-show-responses'>

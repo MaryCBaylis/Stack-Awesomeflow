@@ -1,10 +1,40 @@
+$font-title: Allerta;
+$font-copy: 'Crimson Text';
+
 nav {
   height: 80px;
   width: 100%;
-  
-  background-color: #490A3D;
+  margin: 0;
+  padding: 20px 20%;
   display: flex;
   justify-content: space-around;
-  margin: 0 20%;
-  padding: 20px;
+  align-items: center;
+  background-color: #490A3D;
+
+  h1 {
+    font-family: $font-title;
+    color: white;
+    size: 40px;
+  }
+
+  ul {
+    list-style-type: none;
+    list-style: none;
+
+    li {
+      display: inline;
+      padding: 0;
+      padding-right: 40px;
+      color: white;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: #F8CA00;
+    }
+  }
 }

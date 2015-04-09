@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+	before_action :authenticate_user!, except: [:show]
+
   def index
     @questions = Question.order created_at: :desc
   end
@@ -18,7 +20,6 @@ class QuestionsController < ApplicationController
   def create
     params[:question][:user_id] = current_user.id
     @question = Question.new(question_params)
-
     if @question.save
       redirect_to question_path(@question)
     else

@@ -1,0 +1,7 @@
+<% answers.each do |answer| %>
+  <div>
+    <p><%= answer.user.email %>: <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %></p>
+    <p><%= answer.body %></p>
+    <%= render partial: "shared/responses", locals: { responses: answer.responses } %>
+  </div>
+<% end %>

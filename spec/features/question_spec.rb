@@ -19,6 +19,7 @@ feature "User viewing a question page" do
     # then
     expect(page).to have_content(question.title)
 
+
   end
 
   scenario "When user tries to update their question, text field are prefilled" do
@@ -29,7 +30,10 @@ feature "User viewing a question page" do
   end
 
   scenario "when user tries to delete their question" do
-
+    visit edit_question_path(question)
+    click_button("Delete")
+    expect(page).to have_no_content(question.title) 
+    
   end
 
   

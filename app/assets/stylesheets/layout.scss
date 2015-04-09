@@ -2,6 +2,11 @@
 
 $font-title: Allerta;
 $font-copy: 'Crimson Text';
+$orange: #E97F02;
+$yellow: #F8CA00;
+$purple: #490A3D;
+$pink: #BD1550;
+$green: #8A9B0F;
 
 html {
   width: 100%;
@@ -13,7 +18,7 @@ body {
   margin: 0;
   box-sizing: inherit;
   font-family: $font-copy;
-  $texture-color: #8A9B0F;
+  $texture-color: $green;
   $texture-top-background: lighten($texture-color, 1%);
   $texture-bottom-background: darken($texture-color, 10%);
     // gradient color 1, gradient color 2, gradient angle, texture-number, 0=inverted or 1=normal  

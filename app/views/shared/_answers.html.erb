@@ -1,5 +1,5 @@
 <% answers.each do |answer| %>
-  <div class='question-show-answer'>
+  <div class='question-show-answer<%= " best-answer" if answer.is_best %>'>
     <div class='question-show-answer-body'>
       <p>by <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
       <p><%= answer.body %></p>
@@ -8,6 +8,9 @@
       <p class='question-show-answer-add-response'><%= link_to 'Add Response', '#' %></p>
       <% if answer.user == current_user %>
         <p class='question-show-answer-add-response'><%= link_to 'Edit Your Answer!', edit_question_answer_path(@question, answer) %></p>
+      <% end %>
+      <% if @question.user == current_user %>
+        <p class='question-show-answer-add-response'><%= link_to 'Mark This Best!', mark_best_question_path(@question, answer_id: answer.id, ), id: @question.id %></p>
       <% end %>
     </div>
     <div class='question-show-responses'>  

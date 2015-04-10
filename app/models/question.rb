@@ -1,3 +1,5 @@
+require 'votable'
+
 class Question < ActiveRecord::Base
   include Votable 
   

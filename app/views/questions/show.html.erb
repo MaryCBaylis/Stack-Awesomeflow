@@ -17,10 +17,10 @@
     </div>
     <div class='question-show-question-footer'>
       <p><%= link_to 'Add Answer', new_question_answer_path(@question) %></p>
-      <p><%= link_to 'Add Response', '#' %></p>
+      <p><%= link_to 'Add Comment', '#' %></p>
     </div>
-    <div class='question-show-responses'>
-      <%= render partial: "shared/responses", locals: { responses: @question.responses } %>
+    <div class='question-show-comments'>
+      <%= render partial: "shared/comments", locals: { comments: @question.comments } %>
     </div>
   </div>
   <div class='question-show-answers'>

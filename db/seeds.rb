@@ -1,7 +1,7 @@
 User.destroy_all
 Question.destroy_all
 Answer.destroy_all
-Response.destroy_all
+Comment.destroy_all
 Vote.destroy_all
 
 users = 20.times.map do
@@ -20,12 +20,12 @@ questions.each do |q|
 	q.answers.sample.update(is_best: true) unless q.answers.empty?
 end
 
-responses = 200.times.map do
-	users.sample.responses.create!(user: User.all.sample, body: Faker::Lorem.sentence, post: questions.sample)
+comments = 200.times.map do
+	users.sample.comments.create!(user: User.all.sample, body: Faker::Lorem.sentence, commentable: questions.sample)
 end
 
 500.times do
-	users.sample.responses.create!(user: User.all.sample, body: Faker::Lorem.sentence, post: answers.sample)
+	users.sample.comments.create!(user: User.all.sample, body: Faker::Lorem.sentence, commentable: answers.sample)
 end
 
 2000.times do
@@ -37,7 +37,7 @@ end
 end
 
 1000.times do
-	users.sample.votes.create!(value: 1, votable: responses.sample)
+	users.sample.votes.create!(value: 1, votable: comments.sample)
 end
 
 200.times do
@@ -49,5 +49,5 @@ end
 end
 
 50.times do
-	users.sample.votes.create!(value: -1, votable: responses.sample)
+	users.sample.votes.create!(value: -1, votable: comments.sample)
 end

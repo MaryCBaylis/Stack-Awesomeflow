@@ -54,6 +54,11 @@ class QuestionsController < ApplicationController
     redirect_to question_path(@question)
   end
 
+  def recent
+    @questions = Question.order created_at: :desc
+    render 'index'
+  end
+
   protected
 
   def set_question

@@ -1,5 +1,4 @@
 *.log
-Gemfile.lock
 tmp/*
 .coveralls.yml
 coverage/*

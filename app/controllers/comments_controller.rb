@@ -14,6 +14,17 @@ class CommentsController < ApplicationController
       body:             params[:comment][:body],
       user:             current_user)
     @comment.save
-    redirect_to root_path
+
+    if @comment && @comment.save
+      if @comment.commentable_type == 'Question'
+        redirect_to question_path(@comment.commentable)
+      elsif @comment.commentable_type == 'Answer'
+        redirect_to question_path(@comment.commentable.question)
+      else
+        redirect_to root_path, alert: "There was an error with that comment. Please contact the Administrator"
+      end
+    else
+      render 'new'
+    end
   end
 end

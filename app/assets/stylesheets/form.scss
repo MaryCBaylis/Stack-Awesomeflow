@@ -53,7 +53,8 @@ $border-color: #490A3D;
           border: 1px solid $border-color;
           padding: 5px;
         }
-        &:last-child {
+
+        &.check-box-li {
           input[type='checkbox'] {
             margin: 0;
           }

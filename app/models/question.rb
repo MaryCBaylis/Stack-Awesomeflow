@@ -31,4 +31,8 @@ class Question < ActiveRecord::Base
   def answers_by_vote
     self.answers.sort_by {|a| a.net_vote}.reverse
   end
+
+  def self.sort_by_popularity
+    self.all.sort_by{ |q| q.net_vote }.reverse
+  end
 end

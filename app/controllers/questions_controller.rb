@@ -55,13 +55,16 @@ class QuestionsController < ApplicationController
   end
 
   def recent
-    @questions = Question.order created_at: :desc
-    render 'index'
+    redirect_to questions_path
   end
 
   def popular
-    @questions = Question.all.sort_by{ |q| q.net_vote }.reverse
+    @questions = Question.sort_by_popularity
     render 'index'
+  end
+
+  def trending
+
   end
 
   protected

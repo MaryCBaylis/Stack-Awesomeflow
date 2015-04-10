@@ -7,7 +7,7 @@
     <% end %>
     <div class='question-show-answer-body'>
       <p>By <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
-      <div class='question-show-votes'>
+      <div class='question-show-votes <%= answer.vote_class(current_user) %>'>
         <%= link_to "/\\", new_vote_path(votable_type: 'Answer', votable_id: answer.id, value: 1, question_id: @question.id) %>
         <%= answer.net_vote %>
         <%= link_to '\/', new_vote_path(votable_type: 'Answer', votable_id: answer.id, value: -1, question_id: @question.id) %>

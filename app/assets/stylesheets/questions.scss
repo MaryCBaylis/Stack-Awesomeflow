@@ -175,7 +175,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $yellow;
     border: 2px $purple solid;
     border-radius: $vote-size;
     height: $vote-size;
@@ -183,11 +182,26 @@
     flex-direction: column;
     a {
       text-decoration: none;
-      color: $green;
       font-weight: 600;
+      color: $purple;
       &:hover {
         color: $purple;
       }
+    }
+  }
+  .unvoted {
+    background-color: $green;
+  }
+  .voted-up {
+    background-color: $yellow;
+    a:first-child {
+      color: red;
+    }
+  }
+  .voted-down {
+    background-color: $orange; 
+    a:nth-child(2) {
+      color: red;
     }
   }
 }

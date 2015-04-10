@@ -37,6 +37,31 @@ class Question < ActiveRecord::Base
   end
 
   def self.sort_by_trending
-    self.all.sort_by{ |q| q.votes.count + q.comments.count + q.answers.count }.reverse
+    self.all.sort_by{ |q| 
+      q.count_recent_votes + q.count_recent_answers + q.count_recent_comments
+    }.reverse[0..4]
+  end
+
+
+  def count_recent_votes
+    Vote.where(created_at: 1.week.ago..Time.now, votable_type: "Question", votable_id: self.id).count
+  end
+
+  def count_recent_comments
+    count = 0
+    Answer.all.each do |a|
+      if a.question_id == self.id
+        a.comments.each do |c|
+          if a.created_at >= Time.now
+            count+=1
+          end
+        end 
+      end
+    end
+    Comment.where(created_at: 1.week.ago..Time.now, commentable_type: "Question", commentable_id: self.id).count + count
+  end
+
+  def count_recent_answers
+    Answer.where(created_at: 1.week.ago..Time.now, question_id: self.id).count
   end
 end

@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     get 'mark_best', on: :member
     resources :answers, only: [:new, :edit, :destroy, :create, :update]
   end
+
+  resources :votes, only: [:create]
   
 end

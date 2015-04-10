@@ -86,6 +86,28 @@
           color: $pink;
         }
       }
+      .voted-up {
+        a:first-child {
+          color: red;
+        }
+        a:nth-child(2) {
+          color: $orange;
+        }
+        a:hover {
+          color: $pink;
+        }
+      }
+      .voted-down {
+        a:first-child {
+          color: $orange;
+        }
+        a:nth-child(2) {
+          color: red;
+        }
+        a:hover {
+          color: $pink;
+        }
+      }
     }
   }
 
@@ -196,7 +218,7 @@
       font-weight: 600;
       color: $purple;
       &:hover {
-        color: $purple;
+        color: $green;
       }
     }
   }
@@ -204,17 +226,17 @@
   .voted-up {
     a:first-child {
       color: red;
-    }
-    a:nth-child(2) {
-      color: $orange;
+      &:hover {
+        color: $green;
+      }
     }
   }
   .voted-down {
-    a:first-child {
-      color: $orange;
-    }
     a:nth-child(2) {
       color: red;
+      &:hover {
+        color: $green;
+      }
     }
   }
 }

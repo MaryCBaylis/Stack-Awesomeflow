@@ -37,6 +37,7 @@ $border-color: #490A3D;
       }
 
       li {
+
         label {
           padding: 10px 0;
           font-weight: 400;
@@ -45,12 +46,28 @@ $border-color: #490A3D;
           display: block;
           font-size: 24px;
         }
-        input[type='text'] {
+        input {
           width: 100%;
           margin: 0 auto;
           border-radius: 5px;
           border: 1px solid $border-color;
           padding: 5px;
+        }
+        &:last-child {
+          input[type='checkbox'] {
+            margin: 0;
+          }
+          margin-top: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .check-box {
+          width: 50px;
+          margin-right: 10px;
+        }
+        span {
+          display: inline;
         }
         textarea {
           min-height: 300px;
@@ -76,6 +93,23 @@ $border-color: #490A3D;
         &:hover {
           cursor: pointer;
           
+        }
+      }
+    }
+  }
+  .links {
+    a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 24px;
+      color: $orange;
+      &:hover {
+        color: $pink;
+      }
+      &:visited {
+        color: $purple;
+        &:hover {
+          color: $yellow;
         }
       }
     }

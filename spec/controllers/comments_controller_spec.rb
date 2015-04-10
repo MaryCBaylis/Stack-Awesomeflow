@@ -16,4 +16,13 @@ describe CommentsController do
       expect(assigns(:comment)).to be_a(Comment)
     end
   end  
+
+  describe "POST create" do
+    it "creates a new comment when valid params are passed" do
+      expect {
+        post :create, { comment: { body: "this is a comment", user: user, commentable_type: "Question", commentable_id: question.id} }
+      }.to change(Comment, :count).by(1)
+    end
+  end
+
 end

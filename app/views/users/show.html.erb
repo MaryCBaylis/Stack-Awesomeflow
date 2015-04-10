@@ -1,0 +1,22 @@
+Welcome to your profile, <%= @user.email %>!
+
+<p><%= link_to "Edit your stuff!", edit_user_registration_path %></p>
+
+<p>Here is your recent actvitity:</p>
+
+<p>Questions:</p>
+<ul>
+  <% @user.get_recent_questions(@user.id).each do |q| %>
+    <li><%= link_to q.title, question_path(q) %></li>
+  <% end %>
+</ul>
+
+<p>Answers:</p>
+<ul>
+  <% @user.get_recent_answers(@user.id).each do |a| %>
+    <li>
+      <p><%= link_to "In response to: " + a.question.title, question_path(a.question) %></p>
+      <%= a.body %>
+    </li>
+  <% end %>
+</ul>

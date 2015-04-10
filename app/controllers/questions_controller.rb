@@ -59,6 +59,11 @@ class QuestionsController < ApplicationController
     render 'index'
   end
 
+  def popular
+    @questions = Question.all.sort_by{ |q| q.net_vote }.reverse
+    render 'index'
+  end
+
   protected
 
   def set_question

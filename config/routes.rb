@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get 'new_vote', to: 'votes#new'
 
   get 'recent_questions', to: 'questions#recent'
+  get 'popular_questions', to: 'questions#popular'
 
 end

@@ -2,22 +2,27 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   
   def new
-    @comment = Comment.new(
+    comment = Comment.new(
       commentable_type: params[:commentable_type],
       commentable_id: params[:commentable_id])
+
+    render partial: 'comments/form', layout: false, locals: { :@comment => comment }
   end
 
   def create
     @comment = Comment.new(
       commentable_type: params[:comment][:commentable_type],
       commentable_id:   params[:comment][:commentable_id].to_i,
-      body:             params[:comment][:body],
-      user:             current_user)
+      body: params[:comment][:body],
+      user: current_user)
     @comment.save
 
     if @comment && @comment.save
       if @comment.commentable_type == 'Question'
-        redirect_to question_path(@comment.commentable)
+
+        puts @comment
+
+        render partial: 'shared/comment_single', layout: false, locals: { comment: @comment, question: @comment.commentable }
       elsif @comment.commentable_type == 'Answer'
         redirect_to question_path(@comment.commentable.question)
       else

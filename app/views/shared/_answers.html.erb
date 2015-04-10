@@ -15,7 +15,7 @@
       <p><%= answer.body %></p>
     </div>
     <div class='question-show-answer-footer'>
-      <p class='question-show-answer-add-comment'><%= link_to 'Add Comment', '#' %></p>
+      <p class='question-show-answer-add-comment'><%= link_to 'Add Comment', new_comment_path(commentable_type: 'Answer', commentable_id: answer.id) %></p>
       <% if answer.user == current_user %>
         <p class='question-show-answer-add-comment'><%= link_to 'Edit Your Answer!', edit_question_answer_path(@question, answer) %></p>
       <% end %>

@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get 'recent_questions', to: 'questions#recent'
   get 'popular_questions', to: 'questions#popular'
   get 'trending_questions', to: 'questions#trending'
+  get 'user_profile', to: 'users#show'
 
 end

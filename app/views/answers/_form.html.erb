@@ -1,14 +1,27 @@
-<%= form_for [@question, @answer] do |f| %>
+<div class='form-container'>
+  <div class='form-header'>
+    <h2>Add an Answer</h2>
+  </div>
 
-  <% if @answer.errors.any? %>
-    <ul>
-      <% @answer.errors.full_messages.each do |e| %>
-        <li><%= e %></li>
+<div class='form-body'>
+    <%= form_for [@question, @answer] do |f| %>
+      <p>Enter your comment below.</p>
+      <% if @answer.errors.any? %>
+        <ul>
+          <% @answer.errors.full_messages.each do |e| %>
+            <li><%= e %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-  <%= f.submit %>
-<% end %>
+      <ul>
+        <li>
+          <%= f.label :body %>
+          <%= f.text_area :body %>
+        </li>
+      </ul>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include Votable 
+  
   belongs_to :user, inverse_of: :questions
   has_many :votes, as: :votable, dependent: :destroy
   has_many :answers, dependent: :destroy
@@ -8,6 +10,11 @@ class Question < ActiveRecord::Base
   validates :body, presence: true
   validates :user, presence: true
 
+  def get_answers
+    best = [Answer.find_by(id: get_best_answer_id)].compact
+    best | self.answers_by_vote
+  end
+
   def get_best_answer_id
     self.answers.find_by(is_best: true).id || 0
   end
@@ -15,5 +22,9 @@ class Question < ActiveRecord::Base
   def mark_best(answer_id)
     self.answers.update_all(is_best: false)
     Answer.find_by(id: answer_id).update(is_best: true)
+  end
+
+  def answers_by_vote
+    self.answers.sort_by {|a| a.net_vote}.reverse
   end
 end

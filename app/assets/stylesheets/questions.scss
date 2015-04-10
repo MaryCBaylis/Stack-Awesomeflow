@@ -24,7 +24,8 @@
       }
     }
     .question-show-question-body {
-      padding: 0 15px;
+      margin: 0 15px;
+      position: relative;
       p {
         margin-bottom: 5px;
       }
@@ -122,13 +123,15 @@
           border-top: none;
         }
         .question-show-answer-body {
+          position: relative;
           p {
             margin: 0;
             &:first-child {
-              padding-left: 20px;
+              padding-left: 0;  
               margin-bottom: 8px;
               font-size: 16px;
             }
+            padding-left: 20px;
           }
         }
         .question-show-answer-footer {
@@ -161,6 +164,29 @@
             margin: 0;
           }
         }
+      }
+    }
+  }
+  .question-show-votes {
+    $vote-size: 80px;
+    position: absolute;
+    left: -$vote-size;
+    top: $vote-size / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $yellow;
+    border: 2px $purple solid;
+    border-radius: $vote-size;
+    height: $vote-size;
+    width: $vote-size;
+    flex-direction: column;
+    a {
+      text-decoration: none;
+      color: $green;
+      font-weight: 600;
+      &:hover {
+        color: $purple;
       }
     }
   }

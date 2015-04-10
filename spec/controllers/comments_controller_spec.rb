@@ -25,4 +25,16 @@ describe CommentsController do
     end
   end
 
+  describe "DELETE #destroy" do
+    it "deletes the requested comment" do 
+      delete :destroy, { id: comment.to_param }
+      expect(assigns(:comment)).to eq(comment)
+    end
+
+    it "only lets you delete comment if you are signed in" do
+      sign_out user 
+      delete :destroy, { id: comment.to_param }
+      expect(assigns(:comment)).to be_nil
+    end
+  end
 end

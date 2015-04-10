@@ -5,4 +5,14 @@ class Vote < ActiveRecord::Base
   validates :value, presence: true, inclusion: {in: [-1, 1]} 
   validates :user, presence: true
   validates :votable, presence: true
+
+  def self.find_votable(type, id)
+    if type == "Question"
+      Question.find_by(id: id)
+    else if type == "Answer"
+      Answer.find_by(id: id)
+    else if type == "Comment"
+      Response.find_by(id: id)
+    end
+  end
 end

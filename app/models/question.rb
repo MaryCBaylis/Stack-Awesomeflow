@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include Votable 
+  
   belongs_to :user, inverse_of: :questions
   has_many :votes, as: :votable, dependent: :destroy
   has_many :answers, dependent: :destroy

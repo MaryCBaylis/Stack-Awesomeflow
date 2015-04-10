@@ -6,7 +6,12 @@
     </div>
     <% end %>
     <div class='question-show-answer-body'>
-      <p><%= answer.net_vote %> votes! By <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
+      <p>By <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
+      <div class='question-show-votes'>
+        <%= link_to "/\\", new_vote_path(votable_type: 'Answer', votable_id: answer.id, value: 1, question_id: @question.id) %>
+        <%= answer.net_vote %>
+        <%= link_to '\/', new_vote_path(votable_type: 'Answer', votable_id: answer.id, value: -1, question_id: @question.id) %>
+      </div>
       <p><%= answer.body %></p>
     </div>
     <div class='question-show-answer-footer'>

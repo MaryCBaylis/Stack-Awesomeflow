@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     resources :answers, only: [:new, :edit, :destroy, :create, :update]
   end
 
-  get 'new_vote', to: 'votes#add_vote'
+  get 'new_vote', to: 'votes#new'
   
 end

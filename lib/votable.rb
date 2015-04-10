@@ -3,11 +3,6 @@ module Votable
     self.votes.reduce(0) {|sum, v| sum + v.value}
   end
 
-  def voted?(current_user)
-    id = current_user.id if current_user
-    !!self.votes.find_by(user_id: (id || 0))
-  end
-
   def vote_class(current_user)
     id = current_user.id if current_user
     if self.votes.find_by(user_id: (id || 0))

@@ -77,11 +77,13 @@
         }
         a {
           text-decoration: none;
-          color: $orange;
           font-weight: 700;
-          &:hover {
-            color: $pink;
-          }
+        }
+      }
+      .unvoted a {
+        color: $orange;
+        &:hover {
+          color: $pink;
         }
       }
     }
@@ -102,7 +104,6 @@
 
   .question-show-answers {
     margin-top: 20px;
-
 
     .question-show-answers-header {
       display: flex;
@@ -175,6 +176,7 @@
       }
     }
   }
+
   .question-show-votes {
     $vote-size: 80px;
     position: absolute;
@@ -188,6 +190,7 @@
     height: $vote-size;
     width: $vote-size;
     flex-direction: column;
+    background-color: $yellow;
     a {
       text-decoration: none;
       font-weight: 600;
@@ -197,17 +200,19 @@
       }
     }
   }
-  .unvoted {
-    background-color: $green;
-  }
+
   .voted-up {
-    background-color: $yellow;
     a:first-child {
       color: red;
     }
+    a:nth-child(2) {
+      color: $orange;
+    }
   }
   .voted-down {
-    background-color: $orange; 
+    a:first-child {
+      color: $orange;
+    }
     a:nth-child(2) {
       color: red;
     }

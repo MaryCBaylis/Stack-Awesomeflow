@@ -5,7 +5,11 @@ class VotesController < ApplicationController
   def new
     @question = Question.find_by(id: params[:question_id])
     if vote = vote_exists(params)
-      vote.update(value: params[:value])
+      if vote.value == params[:value].to_i
+        vote.destroy
+      else
+        vote.update(value: params[:value])
+      end
     else
       Vote.create(value: params[:value].to_i, user: current_user, votable_type: params[:votable_type], votable_id: params[:votable_id])
     end

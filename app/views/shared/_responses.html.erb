@@ -1,6 +1,6 @@
 <% responses.each do |response| %>
   <div class='response'>
-    <p><%= response.user.email %>: <%= response.created_at.strftime("on %m/%d/%Y at %I:%M%p") %></p>
+    <p><%= response.net_vote.to_s + " #{response.net_vote == 1 ? 'point' : 'points'}" %>, <%= response.user.email %> at <%= response.created_at.strftime("%m/%d/%Y %I:%M %p") %> (<%= link_to "Vote Up", new_vote_path(votable_type: 'Response', votable_id: response.id, value: 1, question_id: @question.id) %> or <%= link_to "Vote Down", new_vote_path(votable_type: 'Response', votable_id: response.id, value: -1, question_id: @question.id) %>)</p>
     <p><%= response.body %></p>
   </div>
 <% end %>

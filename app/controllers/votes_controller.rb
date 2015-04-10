@@ -4,8 +4,18 @@ class VotesController < ApplicationController
 
   def new
     @question = Question.find_by(id: params[:question_id])
-    vote = Vote.new(value: params[:value].to_i, user: current_user, votable_type: params[:votable_type], votable_id: params[:votable_id])
-    vote.save unless Vote.find_by(votable_type: params[:votable_type], votable_id: params[:votable_id], user: current_user)
-    render 'questions/show'
+    if vote = vote_exists(params)
+      vote.update(value: params[:value])
+    else
+      Vote.create(value: params[:value].to_i, user: current_user, votable_type: params[:votable_type], votable_id: params[:votable_id])
+    end
+
+    redirect_to question_path(@question)
+  end
+
+  private
+
+  def vote_exists(params)
+    Vote.find_by(votable_type: params[:votable_type], votable_id: params[:votable_id], user: current_user)
   end
 end

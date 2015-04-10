@@ -65,7 +65,6 @@ class QuestionsController < ApplicationController
 
   def trending
     @questions = Question.sort_by_trending
-    @trending = true
     render 'index'
   end
 

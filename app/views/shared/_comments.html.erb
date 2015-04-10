@@ -1,6 +1,8 @@
 <% comments.each do |comment| %>
   <div class='comment'>
-    <p class='<%= comment.vote_class(current_user) %>'><%= comment.net_vote.to_s + " #{comment.net_vote == 1 ? 'point' : 'points'}" %>, <%= comment.user.email %> at <%= comment.created_at.strftime("%m/%d/%Y %I:%M %p") %> (<%= link_to "Vote Up", new_vote_path(votable_type: 'Comment', votable_id: comment.id, value: 1, question_id: @question.id) %> or <%= link_to "Vote Down", new_vote_path(votable_type: 'Comment', votable_id: comment.id, value: -1, question_id: @question.id) %>)</p>
+    <span class='question-show-votes-container'>
+      <%= render partial: 'shared/comment_votes', layout: false, locals: { question: @question, comment: comment } %>
+    </span>
     <p><%= comment.body %></p>
   </div>
 <% end %>

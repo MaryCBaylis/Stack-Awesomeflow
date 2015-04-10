@@ -232,7 +232,7 @@
     }
   }
   .voted-down {
-    a:nth-child(2) {
+    a:last-child {
       color: red;
       &:hover {
         color: $green;

@@ -35,4 +35,8 @@ class Question < ActiveRecord::Base
   def self.sort_by_popularity
     self.all.sort_by{ |q| q.net_vote }.reverse
   end
+
+  def self.sort_by_trending
+    self.all.sort_by{ |q| q.votes.count + q.comments.count + q.answers.count }.reverse
+  end
 end

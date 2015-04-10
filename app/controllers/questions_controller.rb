@@ -64,7 +64,8 @@ class QuestionsController < ApplicationController
   end
 
   def trending
-
+    @questions = Question.sort_by_trending
+    render 'index'
   end
 
   protected

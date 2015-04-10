@@ -54,6 +54,20 @@ class QuestionsController < ApplicationController
     redirect_to question_path(@question)
   end
 
+  def recent
+    redirect_to questions_path
+  end
+
+  def popular
+    @questions = Question.sort_by_popularity
+    render 'index'
+  end
+
+  def trending
+    @questions = Question.sort_by_trending
+    render 'index'
+  end
+
   protected
 
   def set_question

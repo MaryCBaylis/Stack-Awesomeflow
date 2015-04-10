@@ -1,5 +1,3 @@
-require 'votable'
-
 class Question < ActiveRecord::Base
   include Votable 
   
@@ -32,5 +30,13 @@ class Question < ActiveRecord::Base
 
   def answers_by_vote
     self.answers.sort_by {|a| a.net_vote}.reverse
+  end
+
+  def self.sort_by_popularity
+    self.all.sort_by{ |q| q.net_vote }.reverse
+  end
+
+  def self.sort_by_trending
+    self.all.sort_by{ |q| q.votes.count + q.comments.count + q.answers.count }.reverse
   end
 end

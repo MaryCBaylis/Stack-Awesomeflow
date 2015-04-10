@@ -11,10 +11,17 @@ class VotesController < ApplicationController
         vote.update(value: params[:value])
       end
     else
-      Vote.create(value: params[:value].to_i, user: current_user, votable_type: params[:votable_type], votable_id: params[:votable_id])
+      vote = Vote.create(value: params[:value].to_i, user: current_user, votable_type: params[:votable_type], votable_id: params[:votable_id])
     end
 
-    redirect_to question_path(@question)
+    case params[:votable_type]
+    when 'Question'
+      render partial: 'shared/question_votes', layout: false, locals: { question: @question }
+    when 'Answer'
+      render partial: 'shared/answer_votes', layout: false, locals: { question: @question, answer: Answer.find_by(id: params[:votable_id]) }
+    when 'Comment'
+      render partial: 'shared/comment_votes', layout: false, locals: { question: @question, comment: Comment.find_by(id: params[:votable_id]) }
+    end
   end
 
   private

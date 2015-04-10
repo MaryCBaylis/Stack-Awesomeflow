@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :comments, except: [:index, :show]
 
-  get 'new_vote', to: 'votes#new'
+  post 'new_vote', to: 'votes#new'
 
   get 'recent_questions', to: 'questions#recent'
   get 'popular_questions', to: 'questions#popular'

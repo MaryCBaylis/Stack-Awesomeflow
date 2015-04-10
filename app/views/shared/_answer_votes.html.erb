@@ -1,0 +1,5 @@
+<div class='question-show-votes <%= answer.vote_class(current_user) %>'>
+  <%= link_to "/\\", new_vote_path(votable_type: 'Answer', votable_id: answer.id, value: 1, question_id: question.id) %>
+  <%= answer.net_vote %>
+  <%= link_to '\/', new_vote_path(votable_type: 'Answer', votable_id: answer.id, value: -1, question_id: question.id) %>
+</div>

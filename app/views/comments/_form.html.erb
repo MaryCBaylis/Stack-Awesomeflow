@@ -1,0 +1,15 @@
+<%= form_for @comment do |f| %>
+
+  <% if @comment.errors.any? %>
+    <ul>
+      <% @comment.errors.full_messages.each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <%= f.hidden_field :commentable_type, value: @comment.commentable_type %>
+  <%= f.hidden_field :commentable_id, value: @comment.commentable_id %>
+  <%= f.submit %>
+<% end %>

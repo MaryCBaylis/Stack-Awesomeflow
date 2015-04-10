@@ -20,16 +20,16 @@ class CreateSchema < ActiveRecord::Migration
     add_index :answers, :user_id
     add_index :answers, :question_id
 
-    create_table :responses do |t|
+    create_table :comments do |t|
       t.text :body
       t.integer :user_id
-      t.string :post_type
-      t.integer :post_id
+      t.string :commentable_type
+      t.integer :commentable_id
 
       t.timestamps
     end
-    add_index :responses, :user_id
-    add_index :responses, :post_id
+    add_index :comments, :user_id
+    add_index :comments, :commentable_id
 
     create_table :votes do |t|
       t.integer :value

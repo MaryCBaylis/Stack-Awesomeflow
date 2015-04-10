@@ -11,8 +11,8 @@ This was made by:
 
 1. Users should be able to post questions
 2. Users should be able to answer questions
-3. Users should be able to respond to questions
-4. Users should be able to respond to answers
+3. Users should be able to comment on questions
+4. Users should be able to comment on answers
 5. The Person who wrote a Question can flag one answer as Best
 6. Users must be logged in to add content (question/answer)
 7. Users should be able to create an account
@@ -21,12 +21,12 @@ This was made by:
 10. Users can see questions by highest voted
 11. Users can see questions by most recent
 12. Users can sort questions by 'trending'
-13. Responses should be sorted with oldest first
+13. Comments should be sorted with oldest first
 14. Non-Best Answers should be sorted by votes
 15. A Best Answer should be listed first
 16. Users can vote on Questions
 17. Users can vote on Answers
-18. Users can vote on Responses
+18. Users can vote on Comments
 
 ## MVP
 

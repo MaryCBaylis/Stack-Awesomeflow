@@ -9,7 +9,7 @@
     </div>
     <div class='question-show-question-body'>
       <p><%= @question.body %></p>
-      <div class='question-show-votes'>
+      <div class='question-show-votes <%= @question.vote_class(current_user) %>'>
         <%= link_to "/\\", new_vote_path(votable_type: 'Question', votable_id: @question.id, value: 1, question_id: @question.id) %>
         <%= @question.net_vote %>
         <%= link_to '\/', new_vote_path(votable_type: 'Question', votable_id: @question.id, value: -1, question_id: @question.id) %>

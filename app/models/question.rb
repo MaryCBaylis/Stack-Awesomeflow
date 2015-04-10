@@ -1,3 +1,5 @@
+require 'votable'
+
 class Question < ActiveRecord::Base
   include Votable 
   
@@ -16,7 +18,11 @@ class Question < ActiveRecord::Base
   end
 
   def get_best_answer_id
-    self.answers.find_by(is_best: true).id || 0
+    if id = self.answers.find_by(is_best: true)
+      id
+    else
+      0
+    end
   end
 
   def mark_best(answer_id)

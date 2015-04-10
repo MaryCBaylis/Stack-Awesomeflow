@@ -6,7 +6,12 @@
     </div>
     <% end %>
     <div class='question-show-answer-body'>
-      <p>by <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
+      <p>By <%= answer.user.email %> at <%= answer.created_at.strftime("on %m/%d/%Y at %I:%M%p") %>:</p>
+      <div class='question-show-votes'>
+        <%= link_to "/\\", new_vote_path(votable_type: 'Answer', votable_id: answer.id, value: 1, question_id: @question.id) %>
+        <%= answer.net_vote %>
+        <%= link_to '\/', new_vote_path(votable_type: 'Answer', votable_id: answer.id, value: -1, question_id: @question.id) %>
+      </div>
       <p><%= answer.body %></p>
     </div>
     <div class='question-show-answer-footer'>
@@ -15,7 +20,7 @@
         <p class='question-show-answer-add-response'><%= link_to 'Edit Your Answer!', edit_question_answer_path(@question, answer) %></p>
       <% end %>
       <% if @question.user == current_user %>
-        <p class='question-show-answer-add-response'><%= link_to 'Mark This Best!', mark_best_question_path(@question, answer_id: answer.id, ), id: @question.id %></p>
+        <p class='question-show-answer-add-response'><%= link_to 'Mark This Best!', mark_best_question_path(@question, answer_id: answer.id), id: @question.id %></p>
       <% end %>
     </div>
     <div class='question-show-responses'>  
